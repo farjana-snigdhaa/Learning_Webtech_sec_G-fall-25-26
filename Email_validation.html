@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Email Validation</title>
+</head>
+<body>
+    <h1>Email Validation</h1>
+    <form onsubmit="return test()">
+        Email:
+        <input type="text" id="email" name="email" value="" onblur="testEmail()" />
+        <p id="eError"></p>
+        <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+        const email = document.getElementById('email');
+        const eError = document.getElementById('eError');
+
+        function testEmail() {
+            const v = email.value.trim();
+            // Simple but reasonable email regex: local@domain.tld
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (v === "") {
+                eError.innerHTML = "Email cannot be empty!";
+                eError.style.color = "red";
+            } else if (!regex.test(v)) {
+                eError.innerHTML = "Please enter a valid email address (example@domain.com).";
+                eError.style.color = "red";
+            } else {
+                eError.innerHTML = "";
+            }
+        }
+
+        function test() {
+            testEmail();
+            return eError.innerHTML === "";
+        }
+    </script>
+</body>
+</html>

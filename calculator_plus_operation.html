@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title> Calculator for Addition Operation</title>
+</head>
+<body>
+
+<h1>Simple Addition Calculator</h1>
+
+<input type="text" id="display" disabled><br><br>
+
+<button onclick="appendChar('1')">1</button>
+<button onclick="appendChar('2')">2</button>
+<button onclick="appendChar('3')">3</button><br><br>
+
+<button onclick="appendChar('4')">4</button>
+<button onclick="appendChar('5')">5</button>
+<button onclick="appendChar('6')">6</button><br><br>
+
+<button onclick="appendChar('7')">7</button>
+<button onclick="appendChar('8')">8</button>
+<button onclick="appendChar('9')">9</button><br><br>
+
+<button onclick="appendChar('0')">0</button>
+<button onclick="appendChar('+')">+</button><br><br>
+
+<button onclick="clearAll()">C</button>
+<button onclick="deleteChar()">Del</button>
+<button onclick="calculate()">=</button>
+
+<script>
+     display = document.getElementById("display");
+
+    function appendChar(val) {
+        display.value += val;
+    }
+
+    function clearAll() {
+        display.value = "";
+    }
+
+    function deleteChar() {
+        display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+        let parts = display.value.split("+");
+        let total = 0;
+
+        for (let i = 0; i < parts.length; i++) {
+            if (!isNaN(parts[i]) && parts[i] !== "") {
+                total += Number(parts[i]);
+            }
+        }
+
+        display.value = total;
+    }
+</script>
+
+</body>
+</html>

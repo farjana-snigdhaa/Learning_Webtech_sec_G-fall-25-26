@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <title>JS Example</title>
+</head>
+<body>
+        <h1>Js Example</h1>
+        <form onsubmit="return test()">
+            Username: <input type="text" id="username" name="username" value="" onblur="testUsername()" />
+            <p id="uError"></p>
+            Password: <input type="password" id="password" name="password" value="" onblur="testPassword()" />
+            <p id="pError"></p>
+            <input type="submit" name="" value="Submit" />
+        </form>
+        
+
+        <script>
+            // name = "alamin";
+            // var name = "alamin";
+            // let name = "alamin";
+            // const name = "alamin";
+
+            // let std = [1, 'alamin', '2.5'];
+            // let stds = [
+            //     [1, 'alamin', '2.5'],
+            //     [2, 'alamin', '2.9'],
+            //     [3, 'alamin', '3.5']
+            // ];
+            // stds[2][2];
+
+            // if(1 === "1"){
+            //     true;
+            // }else{
+            //     false;
+            // }
+
+            // for(let a=0; a<10; a++){
+
+            // }
+
+            // function abc(xyz, b){
+            //     let c = xyz(10, b);
+            //     return c;
+            // }
+            
+            // let xyz = function(a, b){
+            //     let c = a+b;
+            //     return c;
+            // }
+            // let d = abc(xyz, 20)
+
+            // let pqr = (a,b)=>a+b;
+            //console.log('testing form JS');
+            //alert('test');
+            //document.write('Test from JS');
+            
+            let uError = document.getElementById('uError');
+            let pError = document.getElementById('pError');
+            let password = document.getElementById('password');
+            let username = document.getElementById('username');
+
+            function testUsername(){
+                if(username.value == ""){
+                    uError.innerHTML = "Please type username first!";
+                    uError.style.color = "red";
+                }else{
+                    uError.innerHTML = "";
+                }
+            }
+
+            function testPassword(){
+                if(password.value == ""){
+                    pError.innerHTML = "Please type password first!";
+                    pError.style.color = "red";
+                }else{
+                    pError.innerHTML = "";
+                }
+            }
+
+            function test(){
+                if(uError.innerHTML !== "" || pError.innerHTML !== ""){
+                    return false;
+                }else{
+                    if(username.value != "" && password.value != ""){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+
+        </script>
+
+</body> 
+</html>
