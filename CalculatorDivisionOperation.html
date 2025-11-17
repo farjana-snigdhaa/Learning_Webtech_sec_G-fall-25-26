@@ -1,0 +1,80 @@
+
+<html>
+<head>
+    
+    <title> Division Calculator</title>
+</head>
+<body>
+
+<script>
+  
+    let display = document.createElement("input");
+    
+    display.id = "display";
+    display.disabled = true;
+    
+    display.style.width = "300px";
+    display.style.height = "50px";
+    display.style.marginBottom = "16px";
+    
+    document.body.appendChild(display);
+    document.body.appendChild(document.createElement("br"));
+
+
+    function createBtn(text, onclickFn) {
+        let btn = document.createElement("button");
+        btn.innerText = text;
+        btn.onclick = onclickFn;
+        btn.style.width = "50px";
+        btn.style.height = "45px";
+        btn.style.margin = "5px";
+        document.body.appendChild(btn);
+    }
+
+    function appendChar(val) {
+        display.value += val;
+    }
+
+    function clearAll() {
+        display.value = "";
+    }
+
+
+    function deleteChar() {
+        display.value = display.value.slice(0, -1);
+    }
+
+
+    function calculate() {
+        let parts = display.value.split("/");
+        let result = Number(parts[0]);
+
+        for (let i = 1; i < parts.length; i++) {
+            if (parts[i] !== "" && !isNaN(parts[i])) {
+                result /= Number(parts[i]);
+            }
+        }
+
+        display.value = result;
+    }
+
+    for (let i = 1; i <= 9; i++) {
+        createBtn(i, () => appendChar(i));
+        if (i % 3 === 0) document.body.appendChild(document.createElement("br"));
+    }
+
+    createBtn("0", () => appendChar("0"));
+    createBtn("/", () => appendChar("/"));
+
+    document.body.appendChild(document.createElement("br"));
+
+    createBtn("C", clearAll);
+    createBtn("Del", deleteChar);
+    createBtn("=", calculate);
+
+</script>
+
+
+
+</body>
+</html>
